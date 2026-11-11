@@ -89,6 +89,59 @@ nav a[href="consultation.html"]:hover,nav a[href="consultation.html"][aria-curre
 .hero-copy{align-self:center}
 .hero-copy .practice-line{min-height:2.75rem}
 .hero-copy .practice-line:empty{display:block}
+
+/* Courtroom photograph by Christian Wasserfallen, Pexels #14766052. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  background: #143530 url("https://images.pexels.com/photos/14766052/pexels-photo-14766052.jpeg?auto=compress&cs=tinysrgb&w=1600") center 54% / cover no-repeat;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, rgba(13,42,37,.94), rgba(13,42,37,.78) 58%, rgba(13,42,37,.63)),
+              linear-gradient(0deg, #102e29 3%, transparent 55%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: .85rem;
+  border: 1px solid #84a29588;
+  pointer-events: none;
+}
+.hero .wrap {
+  grid-template-columns: minmax(0,1.45fr) minmax(0,1fr);
+  column-gap: clamp(1.5rem,5vw,4.25rem);
+  row-gap: 2.25rem;
+  align-content: center;
+}
+.hero h1 {font-size: clamp(3.05rem,8vw,6.5rem)}
+.portrait-slot {position:relative;aspect-ratio:4/5;width:min(100%,20rem);justify-self:end}
+.portrait-slot figcaption {
+  position:absolute;
+  inset:auto 0 0;
+  padding:.55rem .8rem;
+  color:#fffaf0;
+  background:#102e29eb;
+  font-size:.8rem;
+}
+.hero-details {
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem 2rem;
+  padding-top:1.25rem;
+  border-top:1px solid #e6c89280;
+}
+.hero-details h2 {font-size:1.45rem;letter-spacing:0}
+.hero .hero-details p:not(.eyebrow) {font-size:.88rem;margin:.35rem 0 0}
+@media(max-width:700px) {
+  .hero .wrap {grid-template-columns:minmax(0,1fr);width:calc(100% - 3.5rem)}
+  .hero::before {background:#102e29d9}
+  .portrait-slot {justify-self:start;aspect-ratio:4/3;width:min(100%,20rem)}
+}
 </style>
 </head>
 <body id="top">
@@ -99,9 +152,12 @@ nav a[href="consultation.html"]:hover,nav a[href="consultation.html"][aria-curre
 </div></header>
 <main id="main">
 <section class="hero" aria-labelledby="title"><div class="wrap">
-<div class="hero-copy"><p class="eyebrow">Attorney at Law</p><h1 id="title">Jeffrey L Cox</h1><!-- Add approved practice area and trial lawyer wording here. --><div class="practice-line"></div><p>Have a legal question? Start by organizing what happened, what matters to you, and what you want to ask.</p><a class="cta" href="consultation.html">Request a consultation</a></div>
-<!-- Photo by Sora Shimazaki, Pexels #5668882 --><figure class="hero-photo"><img src="https://images.pexels.com/photos/5668882/pexels-photo-5668882.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1100" alt="Scales of justice and a gavel on a wooden table" fetchpriority="high"></figure>
-</div></section>
+<div class="hero-copy"><p class="eyebrow">Attorney at Law</p><h1 id="title">Jeffrey L Cox</h1><p>Have a legal question? Start by organizing what happened, what matters to you, and what you want to ask.</p><a class="cta" href="consultation.html">Request a consultation</a></div>
+<!-- Photo by Sora Shimazaki, Pexels #5668882 --><figure class="hero-photo portrait-slot"><img src="https://images.pexels.com/photos/5668882/pexels-photo-5668882.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1100" alt="Scales of justice and a gavel on a wooden table" fetchpriority="high"><figcaption>Portrait placeholder</figcaption></figure>
+<div class="hero-details" aria-label="Reserved space for office information">
+<div><h2>Specialties</h2><p>Details to come</p></div>
+<div><h2>Areas served</h2><p>Details to come</p></div>
+</div></div></section>
 <section id="office" class="wrap intro"><h2>The law office</h2><p>This is the website of Jeffrey L Cox, Attorney at Law. For the office phone number and contact form, visit <a href="contact.html">Contact Us</a>.</p></section>
 <section id="prepare" class="prep"><div class="wrap"><div class="prep-heading"><h2>Before you speak with a lawyer</h2><!-- Pexels #8731041 --><img src="https://images.pexels.com/photos/8731041/pexels-photo-8731041.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=750" alt="A law book held beside scales of justice" loading="lazy"></div>
 <ul class="steps"><li><h3>Write down key dates</h3><p>Make a brief timeline. Include any upcoming hearings or deadlines you know about.</p></li><li><h3>Gather relevant records</h3><p>Make a list of documents or notices you have. Ask how to share them securely before sending copies.</p></li><li><h3>Bring your questions</h3><p>Think about the outcome you hope for and what you want to understand about the process, timing, or fees.</p></li></ul>
@@ -115,6 +171,7 @@ nav a[href="consultation.html"]:hover,nav a[href="consultation.html"][aria-curre
 <footer><div class="wrap"><p><strong>Jeffrey L Cox · Attorney at Law</strong></p><p>Website preview for review. This site provides general information. Viewing it does not create an attorney-client relationship.</p></div></footer>
 </body>
 </html>
+
 
 
 
