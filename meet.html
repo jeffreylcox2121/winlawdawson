@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta http-equiv="Content-Security-Policy" content="form-action 'none'; connect-src 'none'">
+<title>Join a Video Call | Jeffrey L Cox</title>
+<style>
+:root{color-scheme:light;--ink:#172c2a;--pine:#153530;--paper:#f7f4ed;--gold:#e6c892;--line:#d6cfc0;--muted:#4d5d56}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.65 system-ui,sans-serif}
+a{color:inherit;text-underline-offset:.25em}
+a:focus-visible,summary:focus-visible{outline:3px solid #8c6932;outline-offset:5px}
+.skip{position:absolute;top:.5rem;left:.5rem;padding:.5rem 1rem;background:white;transform:translateY(-160%)}
+.skip:focus{transform:none;z-index:2}
+.wrap{width:min(100% - 3rem,70rem);margin-inline:auto}
+header .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-block:1rem}
+.brand{text-decoration:none;display:inline-flex;align-items:center;gap:.8rem;font-family:Georgia,serif;font-size:1.18rem}
+.mark{display:grid;place-items:center;width:2.65rem;height:2.65rem;border:1px solid #847048;font-size:.95rem}
+nav ul{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;list-style:none;margin:0;padding:0}
+nav a{font-size:.9rem}
+.hero{background:var(--pine);color:#fffaf0}
+.hero .wrap{display:grid;grid-template-columns:1.45fr 1fr;gap:3rem;align-items:center;padding-block:clamp(3.8rem,9vw,8rem)}
+.eyebrow{letter-spacing:.17em;text-transform:uppercase;font-size:.75rem;font-weight:700;color:var(--gold)}
+h1,h2,h3{font-family:Georgia,serif;font-weight:400;line-height:1.12;margin:0}
+h1{font-size:clamp(3.5rem,9vw,7.25rem);letter-spacing:-.055em}
+h2{font-size:clamp(2rem,5vw,3.3rem);letter-spacing:-.035em}
+h3{font-size:1.55rem}
+.hero p:not(.eyebrow){max-width:35ch;color:#e5e8df;font-size:1.12rem}
+.cta{display:inline-block;margin-top:.65rem;padding:.8rem 1.2rem;background:var(--gold);color:#192e28;text-decoration:none;font-weight:650}
+.cta:hover{background:#f2daa8}
+.hero-art{min-height:18rem;display:grid;place-items:center;border:1px solid #829081;background:repeating-linear-gradient(90deg,#ffffff0b 0 1px,transparent 1px 1.2rem),linear-gradient(145deg,#213f36,#102b26)}
+.hero-art span{display:grid;place-items:center;width:9rem;height:9rem;border:1px solid #bcaa83;outline:1px solid #7e886e;outline-offset:8px;font:3.4rem Georgia,serif;letter-spacing:-.08em;color:var(--gold)}
+section:not(.hero){padding-block:clamp(3rem,7vw,6rem)}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.intro p{margin:0;max-width:54ch;color:var(--muted)}
+.prep{background:#eee9de}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;list-style:none;padding:0;margin:2rem 0 0}
+.steps li{border-top:1px solid #96815d;padding-top:1.2rem}
+.steps p{color:var(--muted);margin-bottom:0}
+.questions{max-width:48rem}
+.questions h2{margin-bottom:1.5rem}
+details{border-top:1px solid var(--line);padding:1rem 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:650}
+details p{margin:.55rem 0 0;color:var(--muted);max-width:62ch}
+footer{background:#102824;color:#e9e9de;padding:2rem 0}
+footer p{margin:.35rem 0;font-size:.88rem}
+@media(max-width:700px){.hero .wrap,.intro,.steps{grid-template-columns:1fr}.hero .wrap{gap:2rem}.hero-art{min-height:12rem}.hero-art span{width:6rem;height:6rem;font-size:2.5rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.demo-hero{background:var(--pine);color:var(--paper);padding:3rem 0}
+.demo-hero h1{font-size:clamp(2.65rem,7vw,4.75rem)}
+.demo-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:2rem;padding-block:2rem 4rem;align-items:start}
+.panel{padding:clamp(1rem,4vw,2rem);background:white;border:1px solid var(--line);min-width:0}
+.panel h2{font-size:2rem;margin-bottom:1rem}
+.panel p{margin:.5rem 0 1rem}
+.field{display:grid;gap:.3rem;margin-bottom:1rem;font-weight:600}
+input,select,button{font:inherit}
+input:not([type=checkbox]),select{display:block;width:100%;min-width:0;padding:.55rem;border:1px solid #817b6e;background:white;color:var(--ink);border-radius:3px}
+button.cta{border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #8c6932;outline-offset:3px}
+fieldset{border:1px solid var(--line);padding:1rem;margin:0 0 1rem;min-width:0}
+.slot{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.5rem}
+.sample{display:block;margin:.5rem 0}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;background:var(--paper);padding:1rem;margin:0}
+[hidden]{display:none}
+@media(max-width:720px){.demo-grid{grid-template-columns:1fr}}
+@media(max-width:370px){.slot{grid-template-columns:1fr}}textarea{width:100%;padding:.55rem;border:1px solid #817b6e;border-radius:3px;font:inherit;resize:vertical}dt{font-weight:650}dd{margin:0 0 .8rem}
+header{background:#faf7ef;border-bottom:1px solid #b8a47d}
+header .wrap{gap:.6rem 1rem}
+.brand{white-space:nowrap;font-weight:600}
+.mark{width:2.85rem;height:2.85rem;background:var(--pine);color:var(--gold);border-color:#ad9567;letter-spacing:.04em}
+nav ul{gap:.25rem}
+nav a{display:block;padding:.57rem .68rem;border-radius:4px;text-decoration:none;font-size:.84rem;font-weight:650}
+nav a:hover,nav a[aria-current=page]{background:#eae4d7}
+nav a[href="consultation.html"]{background:var(--pine);color:#fffaf0}
+nav a[href="consultation.html"]:hover,nav a[href="consultation.html"][aria-current=page]{background:#28534a}
+@media(max-width:960px){header .wrap{align-items:flex-start}header nav{width:100%}}
+@media(max-width:560px){nav ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}nav a{padding:.45rem .5rem}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap">
+<a class="brand" href="index.html"><span class="mark" aria-hidden="true">JLC</span>Jeffrey L Cox</a>
+<nav aria-label="Main navigation"><ul><li><a href="index.html#office">The office</a></li><li><a href="index.html#prepare">First conversation</a></li><li><a href="index.html#questions">FAQs</a></li><li><a href="consultation.html">Request a Consultation</a></li><li><a href="pay.html">Make a Payment</a></li><li><a href="documents.html">Upload Documents</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="meet.html" aria-current="page">Join a Video Call</a></li></ul></nav>
+</div></header>
+<main id="main">
+<div class="demo-hero"><div class="wrap"><p class="eyebrow">Google Meet</p><h1>Join a Video Call</h1><p>Use the meeting link or code from your appointment invitation.</p></div></div>
+<div class="wrap demo-grid">
+<div class="panel"><h2>Open your meeting</h2>
+<form autocomplete="off">
+<label class="field">Google Meet link or code<input id="meeting" type="text" placeholder="https://meet.google.com/…" maxlength="500" required></label>
+<button class="cta" type="submit">Open Google Meet</button>
+<button type="button" id="sample">Try a sample</button>
+</form>
+<p id="message" role="status"></p>
+</div>
+<div class="panel"><h2>Need your invitation?</h2>
+<p>Check your appointment email. If you can’t find it, <a href="contact.html">contact the office</a>.</p>
+<p>In Google Meet, select <strong>Join now</strong> or <strong>Ask to join</strong> when prompted.</p></div>
+</div>
+</main>
+<footer><div class="wrap"><p><strong>Jeffrey L Cox · Attorney at Law</strong></p><p>Website preview for review.</p></div></footer>
+<script>
+const input = document.querySelector('#meeting');
+const message = document.querySelector('#message');
+const meetingCode = /^[a-z]{3}-?[a-z]{4}-?[a-z]{3}$/i;
+
+function codeFrom(value) {
+  if (meetingCode.test(value)) return value.replaceAll('-', '').toLowerCase();
+  try {
+    const url = new URL(value);
+    if (url.origin !== 'https://meet.google.com' || url.username || url.password) return '';
+    const code = url.pathname.replace(/^\/|\/$/g, '');
+    return meetingCode.test(code) ? code.replaceAll('-', '').toLowerCase() : '';
+  } catch {
+    return '';
+  }
+}
+
+document.querySelector('form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const code = codeFrom(input.value.trim());
+  if (!code) {
+    message.textContent = 'Enter a Google Meet invitation link or a 10-letter meeting code.';
+    input.focus();
+    return;
+  }
+  const formatted = [code.slice(0, 3), code.slice(3, 7), code.slice(7)].join('-');
+  window.location.assign('https://meet.google.com/' + formatted);
+});
+
+document.querySelector('#sample').addEventListener('click', () => {
+  message.textContent = 'Sample ready. With a real invitation, this page opens Google Meet so you can ask to join.';
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
