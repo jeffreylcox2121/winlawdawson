@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow"><meta http-equiv="Content-Security-Policy" content="form-action 'none'; connect-src 'none'">
-<title>Upload Documents | Jeffrey Cox</title>
+<title>Upload Documents | Jeffrey L Cox</title>
 <style>
 :root{color-scheme:light;--ink:#172c2a;--pine:#153530;--paper:#f7f4ed;--gold:#e6c892;--line:#d6cfc0;--muted:#4d5d56}
 *{box-sizing:border-box}
@@ -66,13 +66,25 @@ fieldset{border:1px solid var(--line);padding:1rem;margin:0 0 1rem;min-width:0}
 pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;background:var(--paper);padding:1rem;margin:0}
 [hidden]{display:none}
 @media(max-width:720px){.demo-grid{grid-template-columns:1fr}}
-@media(max-width:370px){.slot{grid-template-columns:1fr}}</style>
+@media(max-width:370px){.slot{grid-template-columns:1fr}}
+header{background:#faf7ef;border-bottom:1px solid #b8a47d}
+header .wrap{gap:.6rem 1rem}
+.brand{white-space:nowrap;font-weight:600}
+.mark{width:2.85rem;height:2.85rem;background:var(--pine);color:var(--gold);border-color:#ad9567;letter-spacing:.04em}
+nav ul{gap:.25rem}
+nav a{display:block;padding:.57rem .68rem;border-radius:4px;text-decoration:none;font-size:.84rem;font-weight:650}
+nav a:hover,nav a[aria-current=page]{background:#eae4d7}
+nav a[href="consultation.html"]{background:var(--pine);color:#fffaf0}
+nav a[href="consultation.html"]:hover,nav a[href="consultation.html"][aria-current=page]{background:#28534a}
+@media(max-width:960px){header .wrap{align-items:flex-start}header nav{width:100%}}
+@media(max-width:560px){nav ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}nav a{padding:.45rem .5rem}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header><div class="wrap">
-<a class="brand" href="index.html"><span class="mark" aria-hidden="true">JC</span>Jeffrey Cox</a>
-<nav aria-label="Main navigation"><ul><li><a href="index.html#office">The office</a></li><li><a href="index.html#prepare">First conversation</a></li><li><a href="index.html#questions">FAQs</a></li><li><a href="consultation.html">Request a Consultation</a></li><li><a href="pay.html">Make a Payment</a></li><li><a href="documents.html">Upload Documents</a></li></ul></nav>
+<a class="brand" href="index.html"><span class="mark" aria-hidden="true">JLC</span>Jeffrey L Cox</a>
+<nav aria-label="Main navigation"><ul><li><a href="index.html#office">The office</a></li><li><a href="index.html#prepare">First conversation</a></li><li><a href="index.html#questions">FAQs</a></li><li><a href="consultation.html">Request a Consultation</a></li><li><a href="pay.html">Make a Payment</a></li><li><a href="documents.html" aria-current="page">Upload Documents</a></li><li><a href="contact.html">Contact Us</a></li></ul></nav>
 </div></header>
 <main id="main">
 <div class="demo-hero"><div class="wrap"><p class="eyebrow">Interactive demo · Sample data only</p><h1>Upload Documents</h1><p>Try the document submission flow using the sample files below.</p></div></div>
@@ -93,7 +105,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;background:var(--pa
 <div class="panel"><h2>Emily’s preview</h2><p id="message" role="status">Try the form to see an example.</p><pre id="preview" hidden></pre></div>
 </div>
 </main>
-<footer><div class="wrap"><p><strong>Jeffrey Cox · Attorney at Law</strong></p><p>Website demo for review. Entries stay on this page.</p></div></footer>
+<footer><div class="wrap"><p><strong>Jeffrey L Cox · Attorney at Law</strong></p><p>Website demo for review. Entries stay on this page.</p></div></footer>
 <script>function buildPreview(values) {
   const files = values.getAll('file');
   if (!files.length) {
@@ -128,4 +140,5 @@ form.addEventListener('reset', () => {
 </script>
 </body>
 </html>
+
 
