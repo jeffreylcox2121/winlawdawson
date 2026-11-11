@@ -67,7 +67,13 @@ fieldset{border:1px solid var(--line);padding:1rem;margin:0 0 1rem;min-width:0}
 pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;background:var(--paper);padding:1rem;margin:0}
 [hidden]{display:none}
 @media(max-width:720px){.demo-grid{grid-template-columns:1fr}}
-@media(max-width:370px){.slot{grid-template-columns:1fr}}</style>
+@media(max-width:370px){.slot{grid-template-columns:1fr}}.hero-photo{margin:0;aspect-ratio:4/3;overflow:hidden;border:1px solid #a38e66;box-shadow:0 1rem 3rem #06151255;background:#102b26}
+.hero-photo img,.prep-heading img{display:block;width:100%;height:100%;object-fit:cover}
+.hero-photo img{object-position:center 52%}
+.prep-heading{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;align-items:center}
+.prep-heading img{aspect-ratio:2/1;height:auto;object-position:center 44%;background:#d6cfc0}
+@media(max-width:700px){.hero-photo{aspect-ratio:16/10}.prep-heading{grid-template-columns:1fr;gap:1rem}}
+</style>
 </head>
 <body id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -78,10 +84,10 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;background:var(--pa
 <main id="main">
 <section class="hero" aria-labelledby="title"><div class="wrap">
 <div><p class="eyebrow">Attorney at Law</p><h1 id="title">Jeffrey Cox</h1><p>Have a legal question? Start by organizing what happened, what matters to you, and what you want to ask.</p><a class="cta" href="consultation.html">Request a consultation</a></div>
-<div class="hero-art" aria-hidden="true"><span>JC</span></div>
+<!-- Photo by Sora Shimazaki, Pexels #5668882 --><figure class="hero-photo"><img src="https://images.pexels.com/photos/5668882/pexels-photo-5668882.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1100" alt="Scales of justice and a gavel on a wooden table" fetchpriority="high"></figure>
 </div></section>
 <section id="office" class="wrap intro"><h2>The law office</h2><p>This is the website of Jeffrey Cox, Attorney at Law. For the office phone number and contact form, visit <a href="contact.html">Contact Us</a>.</p></section>
-<section id="prepare" class="prep"><div class="wrap"><h2>Before you speak with a lawyer</h2>
+<section id="prepare" class="prep"><div class="wrap"><div class="prep-heading"><h2>Before you speak with a lawyer</h2><!-- Pexels #8731041 --><img src="https://images.pexels.com/photos/8731041/pexels-photo-8731041.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=750" alt="A law book held beside scales of justice" loading="lazy"></div>
 <ul class="steps"><li><h3>Write down key dates</h3><p>Make a brief timeline. Include any upcoming hearings or deadlines you know about.</p></li><li><h3>Gather relevant records</h3><p>Make a list of documents or notices you have. Ask how to share them securely before sending copies.</p></li><li><h3>Bring your questions</h3><p>Think about the outcome you hope for and what you want to understand about the process, timing, or fees.</p></li></ul>
 </div></section>
 <section id="questions" class="wrap questions"><h2>Frequently asked questions</h2>
@@ -93,3 +99,4 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;background:var(--pa
 <footer><div class="wrap"><p><strong>Jeffrey Cox · Attorney at Law</strong></p><p>Website preview for review. This site provides general information. Viewing it does not create an attorney-client relationship.</p></div></footer>
 </body>
 </html>
+
