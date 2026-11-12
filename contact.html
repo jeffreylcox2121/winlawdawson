@@ -96,7 +96,7 @@ nav a[href="consultation.html"]:hover,nav a[href="consultation.html"][aria-curre
 <label class="field">Email<input name="email" type="email" value="jordan@example.com" required maxlength="254"></label>
 <label class="field">Phone (optional)<input name="phone" type="tel" maxlength="30"></label>
 <label class="field">Message<textarea name="note" rows="4" required maxlength="1000">Could you tell me how to reach the office?</textarea></label>
-<button class="cta" type="submit">Preview message</button>
+<label class="sample"><input type="checkbox" name="mailingList" value="yes"> Send me occasional email updates from the law office.</label><button class="cta" type="submit">Preview message</button>
 <button type="reset">Reset demo</button>
 </form></div>
 <div class="panel">
@@ -116,7 +116,8 @@ function buildPreview(values) {
     'Email: ' + values.get('email')];
   const phone = values.get('phone').trim();
   if (phone) lines.push('Phone: ' + phone);
-  lines.push('', values.get('note').trim());
+  const mailingList = values.get('mailingList') === 'yes' ? 'Opted in' : 'No opt-in';
+  lines.push('Mailing list: ' + mailingList, '', values.get('note').trim());
   return {status: 'Message preview ready. No message was sent.', lines};
 }
 </script>
@@ -140,6 +141,7 @@ form.addEventListener('reset', () => {
 </script>
 </body>
 </html>
+
 
 
 
