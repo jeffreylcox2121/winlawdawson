@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JLC Client Desk Preview</title><link rel="stylesheet" href="desk.css"><script src="desk.js" defer></script><script src="demo-login.js" defer></script></head>
+<body>
+<header><div class="brand"><span class="mark" aria-hidden="true">JLC</span><div>Client Desk</div></div><span class="preview">Private preview · Fictional records only</span></header>
+<section id="login-screen" class="login-screen" aria-labelledby="login-title">
+  <a href="../index.html">Public website</a>
+  <h1 id="login-title">Staff Login</h1>
+  <p>Try Client Desk with the sample administrator account.</p>
+  <dl class="demo-credentials"><dt>Username</dt><dd><code>demo-admin</code></dd><dt>Password</dt><dd><code>JLC-Demo-2026!</code></dd></dl>
+  <form id="demo-login-form" autocomplete="off">
+  <label>Username<input name="username" autocomplete="off" required></label>
+  <label>Password<input type="password" name="password" autocomplete="off" required></label>
+  <p id="login-error" role="alert"></p><button class="primary" type="submit">Sign in</button>
+  </form>
+  <p class="muted">This is a simulated sign-in for fictional records. Use the sample credentials only.</p>
+  </section>
+  <div id="staff-screen" hidden>
+  <nav class="staff-session" aria-label="Staff session"><a href="../index.html">Public website</a><span>Demo administrator</span><button id="demo-signout" type="button">Sign out</button></nav>
+  <main>
+<div class="search-row"><h1>Client Desk</h1><div class="home-actions" aria-label="Client Desk actions"><button id="new-client" class="primary" type="button">Add Client</button><button id="search-client" type="button">Search Client</button><button id="send-letter" type="button">Send Letter</button><button id="send-invoice" type="button">Send Invoice</button></div></div>
+<form id="search-panel" hidden><label for="search" id="search-label">Search by name, phone, email, client ID, or case number</label><div class="search-tools"><input id="search" type="search" placeholder="Try 470-555-0134 or JLC-104" required><button class="primary" type="submit">Search</button><button id="back-home" type="button">Home</button></div></form>
+<div class="workspace"><aside aria-labelledby="list-title"><div class="list-head"><h2 id="list-title">Recently Opened Cases</h2><span id="count"></span></div><div id="results"></div></aside><div id="case" aria-live="polite"></div></div>
+</main>
+<dialog id="client-dialog"><form id="client-form"><h2>New client</h2><p class="muted">Use fictional information for this preview.</p><label>Client or organization name<input name="client" maxlength="140" required></label><label>Phone<input name="phone" type="tel" maxlength="50"></label><label>Email<input name="email" type="email" maxlength="180"></label><label>Mailing address<textarea name="address" rows="2" maxlength="400"></textarea></label><label>Preferred contact<select name="preferred"><option value="">Select a method</option><option>Phone</option><option>Email</option><option>Mail</option></select></label><label>Case number (optional)<input name="caseNumber" maxlength="70"></label><label>Case title (optional)<input name="caseTitle" maxlength="140"></label><p id="intake-error" role="alert"></p><div class="actions"><button type="button" data-close>Cancel</button><button class="primary">Save client</button></div></form></dialog>
+<dialog id="note-dialog"><form id="note-form"><h2>Add a case note</h2><label>Your name<input name="author" maxlength="80" required></label><label>Note<textarea name="text" rows="5" maxlength="10000" required></textarea></label><div class="actions"><button type="button" data-close>Cancel</button><button class="primary">Save note</button></div></form></dialog>
+<dialog id="files-dialog"><form id="files-form"><h2>Add sample documents</h2><p>This preview lists filenames in this tab. It does not upload files to Google Drive. Use fictional files only.</p><label>Your name<input name="author" maxlength="80" required></label><label>Choose sample files<input name="files" type="file" multiple required></label><div class="actions"><button type="button" data-close>Cancel</button><button class="primary">Add to preview</button></div></form></dialog>
+<dialog id="send-dialog"><h2 id="send-title"></h2><p id="send-client"></p><p class="muted" id="send-preview-message"></p><div class="actions"><button type="button" data-close>Close</button></div></dialog>
+<footer>Sample entries clear on reload. Recently opened demo cases are remembered on this browser.</footer>
+</div>
+</body></html>
