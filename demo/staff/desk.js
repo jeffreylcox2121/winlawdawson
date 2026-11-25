@@ -144,6 +144,40 @@ function section(title,action){
   block.append(head);
   return block;
 }
+function driveFolderAction(item){
+  const key="jlc-demo-drive-folder:"+item.id;
+  let saved="";
+  try{saved=sessionStorage.getItem(key)??"";}catch{}
+  const valid=value=>{
+    try{
+      const url=new URL(value);
+      return url.origin==="https://drive.google.com"&&/^\/drive\/folders\/[A-Za-z0-9_-]+\/?$/.test(url.pathname)&&!url.username&&!url.password;
+    }catch{return false;}
+  };
+  const actions=node("div",undefined,"drive-actions");
+  if(valid(saved)){
+    const open=node("a","Open Google Drive Folder","drive-open");
+    open.href=saved;
+    open.target="_blank";
+    open.rel="noopener noreferrer";
+    actions.append(open);
+  }
+  actions.append(button(valid(saved)?"Change Drive link":"Link Google Drive Folder",()=>{
+    const dialog=$("drive-dialog"), form=$("drive-form");
+    form.elements.folder.value=saved;
+    $("drive-error").textContent="";
+    form.onsubmit=event=>{
+      event.preventDefault();
+      const value=form.elements.folder.value.trim();
+      if(!valid(value)){$("drive-error").textContent="Enter a Google Drive folder link.";return;}
+      try{sessionStorage.setItem(key,value);}catch{$("drive-error").textContent="This browser could not save the link.";return;}
+      dialog.close();
+      renderCase();
+    };
+    dialog.showModal();
+  }));
+  return actions;
+}
 function facts(entries){
   const list=node("dl",undefined,"facts");
   for(const [label,value] of entries){
@@ -226,6 +260,7 @@ function renderCase(){
     note.append(history);
   } else note.append(node("p","No notes yet.","muted"));
   const docs=section("Recent documents",button("Add documents",()=>$("files-dialog").showModal()));
+  docs.append(driveFolderAction(item));
   if(item.docs.length){
     docs.append(itemList(item.docs.slice(0,3),"doc"));
     const all=node("details");
