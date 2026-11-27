@@ -34,6 +34,10 @@ const caseDetails={
   "JLC-107":{parties:[]}
 };
 let active;
+const offerLog=new Map([["JLC-104",[
+  {date:"2026-11-24",type:"Counteroffer",party:"Defense counsel (demo)",terms:"Proposed a revised resolution for discussion.",outcome:"Awaiting response",deadline:"2026-12-03"},
+  {date:"2026-11-21",type:"Offer",party:"Prosecution (demo)",terms:"Presented proposed terms for the client to review.",outcome:"Discussed at intake"}
+]]]);
 let mode="home";
 let submittedQuery="";
 let pendingDocument;
@@ -131,7 +135,8 @@ function itemList(items,type){
   for(const item of items){
     const li=node("li");
     li.append(node(type==="note"?"p":"strong",type==="note"?item.text:item.name,type==="note"?"note-text":""));
-    li.append(node("p",item.author+" · "+dateFormat.format(new Date(item.date)),"byline"));
+    const timestamp=dateFormat.format(new Date(item.date));
+    li.append(node("p",type==="doc"?timestamp:item.author+" · "+timestamp,"byline"));
     list.append(li);
   }
   return list;
@@ -177,6 +182,26 @@ function driveFolderAction(item){
     dialog.showModal();
   }));
   return actions;
+}
+const calendarDate=new Intl.DateTimeFormat("en-US",{dateStyle:"medium",timeZone:"UTC"});
+const formatDay=value=>calendarDate.format(new Date(value+"T00:00:00Z"));
+function negotiations(item){
+  const panel=section("Offers and Negotiations",button("Add entry",()=>{
+    $("offer-error").textContent="";
+    $("offer-dialog").showModal();
+  }));
+  const entries=[...(offerLog.get(item.id)??[])].sort((a,b)=>b.date.localeCompare(a.date));
+  if(!entries.length){panel.append(node("p","No offers or negotiations recorded.","muted"));return panel;}
+  const list=node("ul",undefined,"rows");
+  for(const entry of entries){
+    const row=node("li");
+    row.append(node("strong",entry.type+" · "+entry.party),node("p",formatDay(entry.date),"byline"),node("p",entry.terms,"note-text"));
+    if(entry.outcome)row.append(node("p","Outcome or next step: "+entry.outcome));
+    if(entry.deadline)row.append(node("p","Response due "+formatDay(entry.deadline),"byline"));
+    list.append(row);
+  }
+  panel.append(list);
+  return panel;
 }
 function facts(entries){
   const list=node("dl",undefined,"facts");
@@ -262,12 +287,13 @@ function renderCase(){
   const docs=section("Recent documents",button("Add documents",()=>$("files-dialog").showModal()));
   docs.append(driveFolderAction(item));
   if(item.docs.length){
-    docs.append(itemList(item.docs.slice(0,3),"doc"));
+    const recentDocuments=[...item.docs].sort((a,b)=>Date.parse(b.date)-Date.parse(a.date));
+    docs.append(itemList(recentDocuments.slice(0,3),"doc"));
     const all=node("details");
-    all.append(node("summary","All documents ("+item.docs.length+")"),itemList(item.docs,"doc"));
+    all.append(node("summary","All documents ("+item.docs.length+")"),itemList(recentDocuments,"doc"));
     docs.append(all);
   } else docs.append(node("p","No documents yet.","muted"));
-  display.append(note,docs,caseContacts(item));
+  display.append(note,docs,negotiations(item),caseContacts(item));
 }
 $("search-panel").addEventListener("submit",event=>{
   event.preventDefault();
@@ -316,6 +342,20 @@ $("client-form").addEventListener("submit",event=>{
   openCase(id);
 });
 for(const button of document.querySelectorAll("[data-close]"))button.addEventListener("click",()=>button.closest("dialog").close());
+$("offer-form").addEventListener("submit",event=>{
+  event.preventDefault();
+  const item=current(), form=event.currentTarget, data=new FormData(form);
+  const get=key=>String(data.get(key)??"").trim();
+  const entry={date:get("date"),type:get("type"),party:get("party"),terms:get("terms"),outcome:get("outcome"),deadline:get("deadline")};
+  if(!item||!entry.date||!entry.party||!entry.terms){
+    $("offer-error").textContent="Enter the date, participants, and terms.";
+    return;
+  }
+  offerLog.set(item.id,[entry,...(offerLog.get(item.id)??[])]);
+  form.reset();
+  $("offer-dialog").close();
+  renderCase();
+});
 $("note-form").addEventListener("submit",event=>{
   event.preventDefault();
   const data=new FormData(event.currentTarget);

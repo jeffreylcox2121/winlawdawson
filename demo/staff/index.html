@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JLC Client Desk Preview</title><link rel="stylesheet" href="desk.css?v=drive-folder"><script src="desk.js?v=drive-folder" defer></script><script src="demo-login.js" defer></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JLC Client Desk Preview</title><link rel="stylesheet" href="desk.css?v=drive-folder"><script src="desk.js?v=offers-log" defer></script><script src="demo-login.js" defer></script></head>
 <body>
 <header><div class="brand"><span class="mark" aria-hidden="true">JLC</span><div>Client Desk</div></div><span class="preview">Private preview · Fictional records only</span></header>
 <section id="login-screen" class="login-screen" aria-labelledby="login-title">
@@ -26,6 +26,7 @@
 <dialog id="files-dialog"><form id="files-form"><h2>Add sample documents</h2><p>This preview lists filenames in this tab. It does not upload files to Google Drive. Use fictional files only.</p><label>Your name<input name="author" maxlength="80" required></label><label>Choose sample files<input name="files" type="file" multiple required></label><div class="actions"><button type="button" data-close>Cancel</button><button class="primary">Add to preview</button></div></form></dialog>
 <dialog id="send-dialog"><h2 id="send-title"></h2><p id="send-client"></p><p class="muted" id="send-preview-message"></p><div class="actions"><button type="button" data-close>Close</button></div></dialog>
 <dialog id="drive-dialog"><form id="drive-form"><h2>Link Google Drive Folder</h2><p class="muted">Use an empty test folder. The link is saved only in this browser tab.</p><label>Google Drive folder URL<input name="folder" type="url" required></label><p id="drive-error" role="alert"></p><div class="actions"><button type="button" data-close>Cancel</button><button class="primary">Save folder link</button></div></form></dialog>
+<dialog id="offer-dialog"><form id="offer-form"><h2>Add negotiation entry</h2><label>Date<input name="date" type="date" required></label><label>Type<select name="type"><option>Offer</option><option>Counteroffer</option><option>Discussion</option></select></label><label>From or participants<input name="party" maxlength="140" required></label><label>Terms or discussion<textarea name="terms" rows="4" maxlength="4000" required></textarea></label><label>Outcome or next step<input name="outcome" maxlength="240"></label><label>Response deadline (optional)<input name="deadline" type="date"></label><p id="offer-error" role="alert"></p><div class="actions"><button type="button" data-close>Cancel</button><button class="primary">Save entry</button></div></form></dialog>
 <footer>Sample entries clear on reload. Recently opened demo cases are remembered on this browser.</footer>
 </div>
 </body></html>
